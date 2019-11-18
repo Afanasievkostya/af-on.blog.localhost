@@ -1,7 +1,6 @@
 $(function () {
 
 // вызываем аккордион
-
- $('.categories-sheps').dcAccordion({speed: 300});
+$('.categories-sheps').dcAccordion({speed: 300});
 
 });

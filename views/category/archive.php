@@ -8,46 +8,39 @@
            <div class="row">
               <div class="col-text col-lg-9">
                  <section class="text">
-                   <?php if( !empty($articles) ): ?>
+                   <?php if( !empty($cards) ): ?>
                     <div class="text-title">
-                       <h2><?= $category->name?></h2>
+                       <h2>Все публикации</h2>
                     </div>
-                    <?php foreach ($articles as $article): ?>
+                    <?php foreach ($cards as $card): ?>
                       <div class="card text-center card-text">
                        <div class="card-header text-left">
-                          <?= $article->date?>
+                          <?= $card->date?>
                        </div>
                        <div class="card-body">
-                          <h5 class="card-title"><?= $article->name?></h5>
+                          <h5 class="card-title"><?= $card->name?></h5>
                           <div class="card-text text-left">
-                            <?= $article->content_info?>
+                            <?= $card->content_info?>
                           </div>
                            <div class="button">
-                          <a href="<?= \yii\helpers\Url::to(['articles/view', 'id' => $article->id]) ?>" class="btn btn-primary">Подробнее</a>
+                          <a href="<?= \yii\helpers\Url::to(['articles/view', 'id' => $card->id]) ?>" class="btn btn-primary">Подробнее</a>
                         </div>
                        </div>
                        <ul class="card-footer text-muted text-left">
-                          <li class="click-wrap"><span class="card-footer-text"><?= $article->like?></span>
+                          <li class="click-wrap"><span class="card-footer-text"><?= $card->like?></span>
                              <span class="card-footer--click" style="font-size: 30px"><i class="fas fa-comment-alt"></i></span>
                           </li>
                           <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-up"></i></span></a></li>
                           <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-down"></i></span></a></li>
                        </ul>
                     </div>
-
-                  <?php endforeach; ?>
+                   <?php endforeach; ?>
                   <div class="pagination-wrap">
                <?php
                 echo \yii\widgets\LinkPager::widget([
                'pagination' => $pages,]);
                ?>
              </div>
-                <?php else: ?>
-                  <div class="articles-error">
-                  <h2><?= $category->name?></h2>
-                  <p>Здесь публикаций пока нет...</p>
-                  </div>
-                <?php endif; ?>
                     <!--  product    -->
                  <div class="product">
                        <div class="card product-card">
@@ -56,38 +49,23 @@
                           </div>
                        </div>
                 </div>
+               <?php endif; ?>
                  </section>
               </div>
               <div class="col-lg-3">
                  <aside>
-                    <!-- category -->
+                    <hr align="center" color="#ccc" />
+                    <!-- **************************** -->
                     <section class="categories navbar-expand">
                        <h3 class="title-product title-product--active">Темы публикации</h3>
                        <ul class="categories-sheps">
                        <?= \app\components\MenuWidget::widget(['tpl' => 'menu']) ?>
                        </ul>
                     </section>
+                    <hr align="center" color="#ccc" />
 
-                    <hr align="center" color="#ccc" />
       <!-- ********************************************-->
-                    <div class="archive navbar-expand">
-                       <div class="collapse navbar-collapse">
-                          <div class="archive-wrap">
-                                <a class="archive-wrap--click" href="#" data-toggle="collapse" data-target="#navbarTogglerDemo05">Архив</a>
-                                <div class="collapse" id="navbarTogglerDemo05">
-                                   <ul class="archive-sheps">
-                                      <li class="archive-item">
-                                           <?= Html::a('статьи', ['category/archive'], ['class'=>'archive-item--click'])?>
-                                      </li>
-                                      <li class="archive-item">
-                                         <a class="archive-item--click" href="#">Видео</a>
-                                      </li>
-                                   </ul>
-                                </div>
-                             </div>
-                          </div>
-                    </div>
-                    <hr align="center" color="#ccc" />
+
                     <!--  element    -->
                           <div class="element">
                                 <div class="card product-card">

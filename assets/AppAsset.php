@@ -25,7 +25,7 @@ class AppAsset extends AssetBundle
       'https://fonts.googleapis.com/css?family=Lobster&display=swap',
       'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
       'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
-      'css/normalise.css',
+      'css/normalize.min.css',
       'css/style.css',
     ];
     public $js = [

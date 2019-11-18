@@ -8,6 +8,13 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
+    'modules' => [
+       'admin' => [
+           'class' => 'app\modules\admin\Module',
+           'layout' => 'admin',
+           'defaultRoute' => 'category/index'
+       ],
+   ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -24,6 +31,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+          //  'loginUrl' => 'site/index', // меняет страницу авторизации
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -56,7 +64,28 @@ $config = [
               'search' => 'category/search',
             ],
         ],
+        'formatter' => [
+            'dateFormat' => 'dd.MM.YYYY',
+            'timeFormat' => 'php:H:i:s',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'defaultTimeZone' => 'UTC',
+            'timeZone' => 'Europe/Moscow',
+            'locale' => 'ru-RU',
+        ],
 
+    ],
+    'controllerMap' => [
+      'elfinder' => [
+      'class' => 'mihaildev\elfinder\PathController',
+      'access' => ['@'],
+      'root' => [
+        'baseUrl'=>'@web',
+        'basePath'=>'@webroot',
+        'path' => 'upload/global',
+        'name' => 'Global'
+      ],
+     ]
     ],
     'params' => $params,
 ];

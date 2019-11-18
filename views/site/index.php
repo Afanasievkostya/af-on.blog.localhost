@@ -21,15 +21,14 @@ use yii\helpers\Html;
                   <div class="card-body">
                      <h5 class="card-title"><?= $card->name?></h5>
                      <div class="card-text text-left">
-                       <?= Html::img("@web/img/{$card->image}", ['alt' => $card->name])?>
-                        <p class="contects-text"><?= $card->content_info?></p>
+                       <?= $card->content_info?>
                      </div>
                      <div class="button">
                      <a href="<?= \yii\helpers\Url::to(['articles/view', 'id' => $card->id]) ?>" class="btn btn-primary">Подробнее</a>
                      </div>
                   </div>
                   <ul class="card-footer text-muted text-left">
-                     <li class="click-wrap"><span class="card-footer-text"><?= $card->sums?></span>
+                     <li class="click-wrap"><span class="card-footer-text"><?= $card->like?></span>
                         <span class="card-footer--click" style="font-size: 30px"><i class="fas fa-comment-alt"></i></span>
                      </li>
                      <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-up"></i></span></a></li>
@@ -86,7 +85,7 @@ use yii\helpers\Html;
                      </div>
                      <div class="card-body">
                         <p class="card-title">Афанасьев Константин</p>
-                        <p class="card-text">Автор статей.</p>
+                        <p class="card-text">Автор</p>
                         <?= Html::a('Подробнее', ['site/author'], ['class'=>'btn btn-primary'])?>
                      </div>
                   </div>
@@ -108,7 +107,7 @@ use yii\helpers\Html;
                            <div class="collapse" id="navbarTogglerDemo05">
                               <ul class="archive-sheps">
                                  <li class="archive-item">
-                                    <a class="archive-item--click" href="#">Статьи</a>
+                                    <?= Html::a('статьи', ['category/archive'], ['class'=>'archive-item--click'])?>
                                  </li>
                                  <li class="archive-item">
                                     <a class="archive-item--click" href="#">Видео</a>

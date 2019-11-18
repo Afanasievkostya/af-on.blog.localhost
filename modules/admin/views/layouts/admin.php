@@ -22,7 +22,7 @@ $action = Yii::$app->controller->action->id;
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title>Админка | <?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
    </head>
    <body>
@@ -87,16 +87,71 @@ $action = Yii::$app->controller->action->id;
                         </div>
                      </div>
                   </li>
+                  <!-- вывод сообщений-->
                   <?php if (!Yii::$app->user->isGuest): ?>
                     <li class="nav-right--item"><a class="top-user" href="<?= \yii\helpers\Url::to(['/site/logout'])?>"><?= Yii::$app->user->identity['username']?> (Выход)</a>
                     </li>
                   <?php endif;?>
-                  <li class="nav-right--item"><a href="<?= \yii\helpers\Url::to('/admin')?>"><img src="/img/User.png" alt="вход"></a></li>
+                  <!-- <li class="nav-right--item"><a href="#"><img src="/img/User.png" alt="вход"></a></li> -->
                </ul>
             </div>
          </div>
       </header>
+      <main class="main-admin">
+        <div class="container">
+      <div class="header-bottom"><!--header-bottom-->
+
+               <div class="row">
+                   <div class="col-lg-5">
+
+                           <ul class="nav-bottom">
+
+
+
+                               <li class="dropdown">
+ <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Темы публикации
+ </a>
+
+ <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+   <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['category/index']) ?>">Список тем</a>
+   <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['category/create']) ?>">Добавить тему</a>
+ </div>
+</li>
+
+
+
+                               <li class="dropdown">
+ <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Статьи
+ </a>
+
+ <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+   <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['articles/index']) ?>">Список статей</a>
+   <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['articles/create']) ?>">Добавить статью</a>
+ </div>
+</li>
+
+<li class="dropdown">
+  <?= Html::a('Черновик', ['articles/draft'], ['class'=>'btn btn-secondary'])?>
+</li>
+
+
+                           </ul>
+
+                   </div>
+               </div>
+
+       </div><!--/header-bottom-->
+       <?php if( Yii::$app->session->hasFlash('success') ): ?>
+           <div class="alert alert-success alert-dismissible" role="alert">
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <?php echo Yii::$app->session->getFlash('success'); ?>
+           </div>
+       <?php endif;?>
         <?= $content ?>
+      </div>
+    </main>
       <footer>
          <div class="container">
             <div class="row">

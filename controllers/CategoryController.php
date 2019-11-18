@@ -12,12 +12,17 @@ class CategoryController extends AppController {
 
   public function actionArticles() {
   //  $cards = Articles::find()->all();
-    $query = Articles::find();
+    $active = '1';
+
+    $query = Articles::find()->where('active = :active', [':active' => $active])->orderBy('date desc');
     $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 4, 'forcePageParam' => false, 'pageSizeParam' => false]);
+
     $cards = $query->offset($pages->offset)->limit($pages->limit)->all();
 
     $this->setMeta('af-on.blog | ' . "статьи");
-    return $this->render('articles', compact('cards', 'pages'));
+    if($cards) {
+      return $this->render('articles', compact('cards', 'pages'));
+    }
   }
 
   // показ публикаций по категориям
@@ -25,16 +30,21 @@ class CategoryController extends AppController {
   public function actionView($id) {
     //$id = Yii::$app->request->get('id'); получение id из get ненадо уже есть $id из параметра
     $category = Category::findOne($id);
-
+    $active = '1';
     if(empty($category))
           throw new \yii\web\HttpException(404, 'Такой категории нет!'); // сообщение об ошибке
         //  $articles = Articles::find()->where(['category_id' => $id])->all();
-      $query = Articles::find()->where(['category_id' => $id]);
+
+      $query = Articles::find()->where(['category_id' => $id, 'active' => $active])->orderBy('date desc');
       $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 1, 'forcePageParam' => false, 'pageSizeParam' => false]);
+
       $articles = $query->offset($pages->offset)->limit($pages->limit)->all();
 
-    $this->setMeta('af-on.blog | ' . $category->name, $category->keywords, $category->description);
-    return $this->render('view', compact('articles', 'pages', 'category'));
+      $this->setMeta('af-on.blog | ' . $category->name, $category->keywords, $category->description);
+
+      if($articles) {
+        return $this->render('view', compact('articles', 'pages', 'category'));
+      }
   }
 
   // поиск
@@ -53,5 +63,22 @@ class CategoryController extends AppController {
 
     return $this->render('search', compact('articles', 'pages', 'q'));
   }
+
+  public function actionArchive() {
+    $archive = '1';
+
+    $query = Articles::find()->where('archive = :archive', [':archive' => $archive]);
+    $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 4, 'forcePageParam' => false, 'pageSizeParam' => false]);
+
+    $cards = $query->offset($pages->offset)->limit($pages->limit)->all();
+
+    $this->setMeta('af-on.blog | ' . "archive");
+
+    if($cards) {
+      return $this->render('archive', compact('cards', 'pages'));
+    }
+    if(empty($cards))
+          throw new \yii\web\HttpException(404, 'В архиве ничего нет!');
+    }
 
 }

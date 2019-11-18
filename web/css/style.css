@@ -158,6 +158,18 @@ header {
   display: inline-block;
 }
 
+.top-user {
+  font-weight: 700;
+  color: #34404b;
+}
+
+.top-user:hover,
+.top-user:focus {
+  text-decoration: none;
+  color: #34404b;
+  opacity: 0.5;
+}
+
 .nav-right .btn-fa {
   padding: 0;
   border: none;
@@ -183,7 +195,7 @@ header {
 
 /*    main    */
 main {
-  background-color: #eee;
+  background-color: #efefef;
 }
 
 .col-text {
@@ -200,29 +212,9 @@ main .text {
   padding-top: 60px;
 }
 
-.text-left {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: flex-start;
-}
-
-.card-text img {
-  margin-right: 10px;
-	width: 120px;
-}
-
-.article-card-text img {
-  margin-right: 20px;
-  margin-bottom: 10px;
-  width: 300px;
-  float: left;
-}
-
 .button {
   padding-top: 20px;
 }
-
 
 .btn-primary {
   margin-bottom: 20px;
@@ -441,6 +433,7 @@ aside hr {
 .articles-error {
   text-align: center;
 }
+
 .articles-error p {
   margin-top: 20px;
   font-size: 24px;
@@ -506,8 +499,31 @@ aside hr {
   margin-bottom: 5px;
 }
 
+/*---------login---------*/
+.site-login {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.site-login .form-group {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.site-login label {
+  font-family: "PT Sans"sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #34404b;
+}
+
+.site-login label:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 /*--------product------*/
-.product{
+.product {
   margin-top: 40px;
   transform: scale(0);
   transition: transform 3s;
@@ -592,6 +608,107 @@ footer .nav-link:focus {
 .info-click:hover,
 .info-click:focus {
   text-decoration: none;
+}
+
+/*-----------admin--------*/
+.admin-default-index {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/*     header-bottom   */
+.header-bottom {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.nav-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.index,
+.create,
+.view,
+.update {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.index table,
+.create table,
+.view table,
+.update table {
+  margin-top: 30px;
+}
+
+.suc {
+  margin-top: 40px;
+}
+
+.admin-title {
+  padding: 40px 0 40px 0;
+  text-align: center;
+}
+
+.admin-button {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-top: 40px;
+}
+
+.control-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #34404b;
+}
+
+.field-product-image,
+.field-product-gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-view td:last-child {
+  text-align: center;
+}
+
+.grid-view td:last-child a:hover,
+.grid-view td:last-child a:focus {
+  opacity: 0.5;
+}
+
+.glyphicon {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.glyphicon-eye-open {
+  background: url("../img/view.png")no-repeat;
+  background-position: center;
+}
+
+.glyphicon-pencil {
+  background: url("../img/pencil.png")no-repeat;
+  background-position: center;
+}
+
+.glyphicon-trash {
+  background: url("../img/delete.png")no-repeat;
+  background-position: center;
+}
+
+.btn-primary {
+  margin-bottom: 0;
+  margin-right: 20px;
 }
 
 @media (max-width: 575.98px) {

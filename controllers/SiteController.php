@@ -34,7 +34,7 @@ class SiteController extends AppController
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['post', 'get'],
                 ],
             ],
         ];
@@ -63,9 +63,17 @@ class SiteController extends AppController
      */
     public function actionIndex()
     {
-      $cards = Articles::find()->orderBy('id desc')->limit(3)->all();
+      $active = 2;
+
+      $cards = Articles::find()->where('active = :active', [':active' => $active])->orderBy('date desc')->limit(3)->all();
+
         $this->setMeta('af-on.blog');
-        return $this->render('index', compact('cards'));
+
+        if($cards) {
+
+         return $this->render('index', compact('cards'));
+
+      }
     }
 
     public function actionAuthor()

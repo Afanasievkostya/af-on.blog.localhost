@@ -22,14 +22,11 @@
                             <h5 class="card-title"><?= $articles->name?></h5>
                             </div>
                            <div class="card-text article-card-text">
-                              <?= Html::img("@web/img/{$articles->image}", ['alt' => $articles->name])?>
-                              <p>
-                                <?= $articles->content?>
-                              </p>
-                           </div>
+                             <?= $articles->content?>
+                          </div>
                         </div>
                         <ul class="card-footer text-muted text-left">
-                           <li class="click-wrap"><span class="card-footer-text"><?= $articles->sums?></span>
+                           <li class="click-wrap"><span class="card-footer-text"><?= $articles->like?></span>
                               <span class="card-footer--click" style="font-size: 30px"><i class="fas fa-comment-alt"></i></span>
                            </li>
                            <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-up"></i></span></a></li>
@@ -57,21 +54,6 @@
                </div>
                <div class="col-lg-3">
                  <aside>
-                    <section class="abounts">
-                       <div class="text-abounts">
-                          <h3>Об авторе</h3>
-                       </div>
-                       <div class="card">
-                          <div class="abounts-img">
-                             <img src="/img/admin1.png" class="card-img-top" alt="автор1">
-                          </div>
-                          <div class="card-body">
-                             <p class="card-title">Афанасьев Константин</p>
-                             <p class="card-text">Автор статей.</p>
-                             <?= Html::a('Подробнее', ['site/author'], ['class'=>'btn btn-primary'])?>
-                          </div>
-                       </div>
-                    </section>
                     <hr align="center" color="#ccc" />
               <!-- *************************************** -->
                     <section class="categories navbar-expand">
@@ -89,7 +71,7 @@
                                 <div class="collapse" id="navbarTogglerDemo05">
                                    <ul class="archive-sheps">
                                       <li class="archive-item">
-                                         <a class="archive-item--click" href="#">Статьи</a>
+                                           <?= Html::a('статьи', ['category/archive'], ['class'=>'archive-item--click'])?>
                                       </li>
                                       <li class="archive-item">
                                          <a class="archive-item--click" href="#">Видео</a>
