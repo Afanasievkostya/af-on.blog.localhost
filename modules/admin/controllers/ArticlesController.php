@@ -89,6 +89,7 @@ class ArticlesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+          Yii::app()->session->setFlash('success', ["Статья {$model->name} исправленна"]);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -107,6 +108,7 @@ class ArticlesController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        Yii::app()->session->setFlash('success', ["Статья {$model->name} удалина"]);
 
         return $this->redirect(['index']);
     }
@@ -116,6 +118,10 @@ class ArticlesController extends Controller
       $active = 1;
 
       $cards = Articles::find()->where('active = :active', [':active' => $active])->all();
+
+      if(empty($cards))
+            throw new \yii\web\HttpException(404, 'В черновике ничего нет!'); // сообщение об ошибке
+
       if($cards) {
       return $this->render('draft', compact('cards'));
     }

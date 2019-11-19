@@ -13,8 +13,9 @@ class CategoryController extends AppController {
   public function actionArticles() {
   //  $cards = Articles::find()->all();
     $active = '1';
+    $archive = '0';
 
-    $query = Articles::find()->where('active = :active', [':active' => $active])->orderBy('date desc');
+    $query = Articles::find()->where('active = :active', [':active' => $active])->andWhere('archive = :archive', [':archive' => $archive])->orderBy('date desc');
     $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 4, 'forcePageParam' => false, 'pageSizeParam' => false]);
 
     $cards = $query->offset($pages->offset)->limit($pages->limit)->all();
@@ -31,14 +32,17 @@ class CategoryController extends AppController {
     //$id = Yii::$app->request->get('id'); получение id из get ненадо уже есть $id из параметра
     $category = Category::findOne($id);
     $active = '1';
+    $archive = '0';
     if(empty($category))
           throw new \yii\web\HttpException(404, 'Такой категории нет!'); // сообщение об ошибке
         //  $articles = Articles::find()->where(['category_id' => $id])->all();
 
-      $query = Articles::find()->where(['category_id' => $id, 'active' => $active])->orderBy('date desc');
+      $query = Articles::find()->where(['category_id' => $id, 'active' => $active, 'archive' => $archive])->orderBy('date desc');
       $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 1, 'forcePageParam' => false, 'pageSizeParam' => false]);
 
       $articles = $query->offset($pages->offset)->limit($pages->limit)->all();
+      if(empty($articles))
+            throw new \yii\web\HttpException(404, 'Такой публикации нет!'); // сообщение об ошибке
 
       $this->setMeta('af-on.blog | ' . $category->name, $category->keywords, $category->description);
 

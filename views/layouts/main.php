@@ -65,10 +65,10 @@ $action = Yii::$app->controller->action->id;
                         }  ?>>
                            <?= Html::a('Об авторе', ['site/author'], ['class'=>'nav-link'])?>
                         </li>
-                        <li <?php if ($action == "contacts") { ?>class="nav-item active"<?php } else {
-                          ?>class="nav-item"<?php
-                        }  ?>>
-                           <a class="nav-link" href="#">Контакты</a>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;">
+                            Контакты
+                          </a>
                         </li>
                      </ul>
                   </div>
@@ -105,7 +105,9 @@ $action = Yii::$app->controller->action->id;
                  <span class="logo--text2">blog</span>', ['site/index'], ['class'=>'brand'])?>
                </div>
                <ul class="info col-md-5">
-                  <li class="info-item"><a href="#" class="info-click">Контакты</a></li>
+                  <li class="info-item">  <a class="info-click" data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;">
+                      Контакты
+                    </a></li>
                </ul>
                <div class="nav-social col-md-4">
                   <ul class="social">
@@ -129,6 +131,29 @@ $action = Yii::$app->controller->action->id;
             </div>
          </div>
       </footer>
+      <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Контакты</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <table class="modal-body">
+        <tr align="center">
+          <td><span style="font-size: 42px; color: #e8871d"><i class="far fa-envelope"></i></span></td>
+          <td>afonas48@yandex.ru</td>
+          <td><a href="<?= \yii\helpers\Url::to(['/site/contact'])?>">Написать</a></td>
+        </tr>
+      </table>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

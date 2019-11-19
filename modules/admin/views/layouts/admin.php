@@ -65,11 +65,6 @@ $action = Yii::$app->controller->action->id;
                         }  ?>>
                            <?= Html::a('Об авторе', ['site/author'], ['class'=>'nav-link'])?>
                         </li>
-                        <li <?php if ($action == "contacts") { ?>class="nav-item active"<?php } else {
-                          ?>class="nav-item"<?php
-                        }  ?>>
-                           <a class="nav-link" href="#">Контакты</a>
-                        </li>
                      </ul>
                   </div>
                </nav>

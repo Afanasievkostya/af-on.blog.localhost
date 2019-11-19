@@ -500,24 +500,32 @@ aside hr {
 }
 
 /*---------login---------*/
-.site-login {
+.site-login,
+.site-contact {
   padding-top: 40px;
   padding-bottom: 40px;
 }
 
-.site-login .form-group {
+.site-login .form-group,
+.site-contact .form-group {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.site-login label {
+.site-contact .form-group {
+   padding-top: 10px;
+}
+
+.site-login label,
+.site-contact label {
   font-family: "PT Sans"sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: #34404b;
 }
 
-.site-login label:hover {
+.site-login label:hover,
+.site-contact label:hover {
   cursor: pointer;
   opacity: 0.5;
 }
@@ -608,6 +616,7 @@ footer .nav-link:focus {
 .info-click:hover,
 .info-click:focus {
   text-decoration: none;
+  opacity: 0.5;
 }
 
 /*-----------admin--------*/
@@ -710,6 +719,8 @@ footer .nav-link:focus {
   margin-bottom: 0;
   margin-right: 20px;
 }
+
+/* ------- modal ------*/
 
 @media (max-width: 575.98px) {
   h1 {

@@ -63,9 +63,10 @@ class SiteController extends AppController
      */
     public function actionIndex()
     {
-      $active = 2;
+      $active = '1';
+      $archive = '0';
 
-      $cards = Articles::find()->where('active = :active', [':active' => $active])->orderBy('date desc')->limit(3)->all();
+      $cards = Articles::find()->where('active = :active', [':active' => $active])->andWhere('archive = :archive', [':archive' => $archive])->orderBy('date desc')->limit(3)->all();
 
         $this->setMeta('af-on.blog');
 
