@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `date` int(10),
   `keywords` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `like` int(10),
+  `views` int(10),
   `active`  enum('0','1') NOT NULL DEFAULT '0',
+  `archive`  enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;

@@ -28,13 +28,15 @@
                           <a href="<?= \yii\helpers\Url::to(['articles/view', 'id' => $article->id]) ?>" class="btn btn-primary">Подробнее</a>
                         </div>
                        </div>
-                       <ul class="card-footer text-muted text-left">
-                          <li class="click-wrap"><span class="card-footer-text"><?= $article->sums?></span>
-                             <span class="card-footer--click" style="font-size: 30px"><i class="fas fa-comment-alt"></i></span>
-                          </li>
-                          <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-up"></i></span></a></li>
-                          <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-down"></i></span></a></li>
-                       </ul>
+                       <div class="card-footer text-muted text-left">
+                         <div id="vk_like<?= $article->id?>"></div>
+                           <script type="text/javascript">
+                            window.onload = function () {
+                           VK.init({apiId: 111, onlyWidgets: true});
+                            VK.Widgets.Like('vk_like<?= $article->id?>', {width: 300});
+                             }
+                           </script>
+                       </div>
                     </div>
                   <?php endforeach; ?>
                   <div class="pagination-wrap">
@@ -66,7 +68,7 @@
                        </div>
                        <div class="card">
                           <div class="abounts-img">
-                             <img src="/img/admin1.png" class="card-img-top" alt="автор1">
+                             <img src="/img/admin.png" class="card-img-top" alt="автор1">
                           </div>
                           <div class="card-body">
                              <p class="card-title">Афанасьев Константин</p>
@@ -85,7 +87,19 @@
                     </section>
 
                     <hr align="center" color="#ccc" />
-      <!-- ********************************************-->
+
+                    <!-- ********************************************-->
+
+                    <section class="categories navbar-expand">
+                       <h3 class="title-product title-product--active">Видео по темам</h3>
+                       <ul class="categories-sheps">
+                       <?= \app\components\VideoWidget::widget(['tplVideo' => 'menuVideo']) ?>
+                       </ul>
+                    </section>
+                    <hr align="center" color="#ccc" />
+
+                 <!-- ********************************************-->
+                 
                     <div class="archive navbar-expand">
                        <div class="collapse navbar-collapse">
                           <div class="archive-wrap">

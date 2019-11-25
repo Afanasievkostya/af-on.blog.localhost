@@ -15,7 +15,11 @@
                      </div>
                      <div class="card card-text">
                         <div class="card-header text-left">
-                           <?= $articles->date?>
+                          <ul class="card-header--wrap">
+                            <li class="card-header--item"><?= $articles->date?></li>
+                            <li class="card-header--item"><span style="color: #666;"><i class="fas fa-book-open"></i></span>
+                            <?= $articles->views?></li>
+                          </ul>
                         </div>
                         <div class="card-body">
                           <div class="text-center">
@@ -25,19 +29,31 @@
                              <?= $articles->content?>
                           </div>
                         </div>
-                        <ul class="card-footer text-muted text-left">
-                           <li class="click-wrap"><span class="card-footer-text"><?= $articles->like?></span>
-                              <span class="card-footer--click" style="font-size: 30px"><i class="fas fa-comment-alt"></i></span>
-                           </li>
-                           <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-up"></i></span></a></li>
-                           <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-down"></i></span></a></li>
-                        </ul>
+                        <div class="card-footer text-muted text-left">
+                          <div id="vk_like"></div>
+                            <script type="text/javascript">
+                             window.onload = function () {
+                            VK.init({apiId: 111, onlyWidgets: true});
+                             VK.Widgets.Like('vk_like', {width: 500, page_id: '1'}, 321);
+                              }
+                            </script>
+                        </div>
                      </div>
                      <?php endif; ?>
                   </section>
                   <!-- ***************************************** -->
                   <section class="comments">
+
                      <h2>Комментарии</h2>
+
+                      <div id="vk_comments"></div>
+                        <script type="text/javascript">
+                        window.onload = function () {
+                        VK.init({apiId: 111, onlyWidgets: true});
+                        VK.Widgets.Comments('vk_comments', {width: 500, limit: 15, page_id: '2'}, 321);
+                         }
+                      </script>
+
                   </section>
                   <!-- ***************************************** -->
                   <div class="social-box">

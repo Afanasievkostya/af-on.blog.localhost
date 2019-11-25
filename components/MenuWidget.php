@@ -38,10 +38,10 @@ class MenuWidget extends Widget {
       if($this->tpl == 'menu.php') {
 
      Yii::$app->cache->set('menu', $this->menuHtml, 60);
-
+      }
       return $this->menuHtml;
     }
-  }
+
 // из массива строим дерево
     protected function getTree(){
         $tree = [];
@@ -56,7 +56,7 @@ class MenuWidget extends Widget {
 
      //передача параметра в select $tab пустая строка
 
-    protected function getMenuHtml($tree, $tab = '') { 
+    protected function getMenuHtml($tree, $tab = '') {
           $str = '';
           foreach ($tree as $category) {
               $str .= $this->catToTemplate($category, $tab);

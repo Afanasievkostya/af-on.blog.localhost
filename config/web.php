@@ -69,7 +69,12 @@ $config = [
               'category/<id:\d+>/page/<page:\d+>' => 'category/view',
               'category/<id:\d+>' => 'category/view',
               'articles/<id:\d+>' => 'articles/view',
+              'video/<id:\d+>/page/<page:\d+>' => 'video/view',
+              'video/<id:\d+>' => 'video/view',
+              'video/<id:\d+>' => 'video/clip',
+              'video/<id:\d+>' => 'video/movie',
               'search' => 'category/search',
+
             ],
         ],
         'formatter' => [
@@ -81,7 +86,6 @@ $config = [
             'timeZone' => 'Europe/Moscow',
             'locale' => 'ru-RU',
         ],
-
     ],
     'controllerMap' => [
       'elfinder' => [
@@ -93,7 +97,7 @@ $config = [
         'path' => 'upload/global',
         'name' => 'Global'
       ],
-     ]
+    ]
     ],
     'params' => $params,
 ];

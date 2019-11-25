@@ -16,7 +16,11 @@ use yii\helpers\Html;
                <?php foreach ($cards as $card): ?>
                  <div class="card text-center card-text">
                   <div class="card-header text-left">
-                     <?= $card->date?>
+                    <ul class="card-header--wrap">
+                      <li class="card-header--item"><?= $card->date?></li>
+                      <li class="card-header--item"><span style="color: #666;"><i class="fas fa-book-open"></i></span>
+                      <?= $card->views?></li>
+                    </ul>
                   </div>
                   <div class="card-body">
                      <h5 class="card-title"><?= $card->name?></h5>
@@ -27,13 +31,15 @@ use yii\helpers\Html;
                      <a href="<?= \yii\helpers\Url::to(['articles/view', 'id' => $card->id]) ?>" class="btn btn-primary">Подробнее</a>
                      </div>
                   </div>
-                  <ul class="card-footer text-muted text-left">
-                     <li class="click-wrap"><span class="card-footer-text"><?= $card->like?></span>
-                        <span class="card-footer--click" style="font-size: 30px"><i class="fas fa-comment-alt"></i></span>
-                     </li>
-                     <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-up"></i></span></a></li>
-                     <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-down"></i></span></a></li>
-                  </ul>
+                  <div class="card-footer text-muted text-left">
+                    <div id="vk_like<?= $card->id?>"></div>
+                      <script type="text/javascript">
+                       window.onload = function () {
+                      VK.init({apiId: 111, onlyWidgets: true});
+                       VK.Widgets.Like('vk_like<?= $card->id?>', {width: 300});
+                        }
+                      </script>
+                  </div>
                </div>
              <?php endforeach; ?>
              <?php endif; ?>
@@ -48,32 +54,56 @@ use yii\helpers\Html;
                   </div>
            </section>
       <!-- ***********************************-->
-            <!-- <section class="video">
+            <section class="video">
                <div class="text-title">
                   <h2>Последнии опубликованные видео</h2>
                </div>
+               <?php if( !empty($clips) ): ?>
+               <?php foreach ($clips as $clip): ?>
                <div class="card mb-3 card-video">
-
-                  <iframe width="auto" height="480" src="https://www.youtube.com/embed/FEb7ICBhUGs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 <video width="auto" height="300" preload="none" controls="controls" poster="/img/headr-fon.png">
+                   <source src="/video/<?= $clip->video?>" type='video/ogg; codecs="theora, vorbis"'>
+                   <source src="/video/<?= $clip->video?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                   <source src="/video/<?= $clip->video?>" type='video/webm; codecs="vp8, vorbis"'>
+                      Тег video не поддерживается вашим браузером.
+                 </video>
                   <div class="card-body">
-                     <h5 class="card-title">Название карточки</h5>
-                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                     <a href="clip.html" class="btn btn-primary">Комментировать</a>
-                     <p class="card-text"><small class="text-muted">01 января 2020 г.</small></p>
-                     <ul class="card-footer text-muted">
-                        <li class="click-wrap"><span class="card-footer-text">50+</span>
-                           <span class="card-footer--click" style="font-size: 30px"><i class="fas fa-comment-alt"></i></span>
-                        </li>
-                        <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-up"></i></span></a></li>
-                        <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-down"></i></span></a></li>
-                     </ul>
+                     <h5 class="card-title"><?= $clip->name?></h5>
+                     <p class="card-text"><?= $clip->content?></p>
+                     <a href="<?= \yii\helpers\Url::to(['video/movie', 'id' => $clip->id]) ?>" class="btn btn-primary">Комментировать</a>
+                     <p class="card-text"><small class="text-muted"><?= $clip->date?></small></p>
+                     <div class="card-footer text-muted">
+                       <div id="vk_like"></div>
+                         <script type="text/javascript">
+                          window.onload = function () {
+                         VK.init({apiId: 111, onlyWidgets: true});
+                          VK.Widgets.Like('vk_like', {width: 300});
+                           }
+                         </script>
+                     </div>
                   </div>
-               </div>
-            </section> -->
-         </div>
-         <div class="col-lg-3">
+                </div>
+                <?php endforeach; ?>
+                <?php endif; ?>
+            </section>
 
-      <!-- ********************************* -->
+            <!-- ***************************************** -->
+
+            <div class="social-box">
+              <ul class="social-box--wrap">
+                <li class="social-box--item"><a href="https://facebook.com" class="btn btn-secondary"><span style="font-size: 18px; color: #fff;"><i class="fab fa-facebook-f"></i></span></a></li>
+                <li class="social-box--item"><a href="https://twitter.com" class="btn btn-warning"><span style="font-size: 18px; color: #46505a;"><i class="fab fa-twitter"></i></span></a></li>
+                <li class="social-box--item"><a href="https://plus.google.com" class="btn btn-danger"><span style="font-size: 18px; color: #fff;"><i class="fab fa-google-plus-g"></i></span></a></li>
+                <li class="social-box--item"><a href="https://www.whatsapp.com" class="btn btn-info"><span style="font-size: 20px; color: #fff;"><i class="fab fa-whatsapp"></i></span></a></li>
+                <li class="social-box--item"><a href="https://www.instagram.com" class="btn btn-success"><span style="font-size: 20px; color: #fff;"><i class="fab fa-instagram"></i></span></a></li>
+                <li class="social-box--item"><a href="https://www.vk.com" class="btn btn-dark"><span style="font-size: 20px; color: #fff;"><i class="fab fa-vk"></i></span></a></li>
+              </ul>
+            </div>
+         </div>
+
+<!-- ********************************* -->
+
+         <div class="col-lg-3">
             <aside>
                <section class="abounts">
                   <div class="text-abounts">
@@ -81,7 +111,7 @@ use yii\helpers\Html;
                   </div>
                   <div class="card">
                      <div class="abounts-img">
-                        <img src="/img/admin1.png" class="card-img-top" alt="автор1">
+                        <img src="/img/admin.png" class="card-img-top" alt="автор1">
                      </div>
                      <div class="card-body">
                         <p class="card-title">Афанасьев Константин</p>
@@ -99,7 +129,19 @@ use yii\helpers\Html;
                  </ul>
               </section>
               <hr align="center" color="#ccc" />
+
                <!-- ********************************************-->
+
+               <section class="categories navbar-expand">
+                  <h3 class="title-product title-product--active">Видео по темам</h3>
+                  <ul class="categories-sheps">
+                  <?= \app\components\VideoWidget::widget(['tplVideo' => 'menuVideo']) ?>
+                  </ul>
+               </section>
+               <hr align="center" color="#ccc" />
+
+               <!-- *********************************************-->
+
                <div class="archive navbar-expand">
                   <div class="collapse navbar-collapse">
                      <div class="archive-wrap">

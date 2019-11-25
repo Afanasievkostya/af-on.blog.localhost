@@ -9,4 +9,13 @@ $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
 
+//comments
+
+$ (document).on('beforeCreate', '#comment-form', function(e) {
+ if( !confirm("Здесь все правильно. Submit?")) {
+ return false;
+ }
+ return true;
+});
+
 });

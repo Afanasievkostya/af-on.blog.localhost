@@ -208,6 +208,14 @@ main {
   box-shadow: 0 0 5px 0 #ccc;
 }
 
+.card-header--item {
+  display: inline-block;
+}
+
+.card-header--item:last-child {
+  margin-left: 10px;
+}
+
 main .text {
   padding-top: 60px;
 }
@@ -236,12 +244,14 @@ main .text {
 }
 
 .card-footer-text {
-  color: #fff;
-  font-size: 10px;
+  color: #34404b;
+  font-size: 12px;
   position: absolute;
   top: -1px;
   left: 20px;
 }
+
+/*        video     */
 
 main .video {
   padding-top: 40px;
@@ -252,10 +262,14 @@ main .video {
   text-align: center;
 }
 
-.card-text,
 .card-video {
+  margin-top: 40px;
+}
+
+.card-text {
   margin-top: 30px;
 }
+
 
 .card-footer--click {
   padding: 0 15px 0 15px;
@@ -720,6 +734,14 @@ footer .nav-link:focus {
   margin-right: 20px;
 }
 
+/*---------comments--------*/
+.comments {
+    margin: 0;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
 /* ------- modal ------*/
 
 @media (max-width: 575.98px) {
@@ -747,11 +769,8 @@ footer .nav-link:focus {
   }
 
   /*    aside    */
-  aside {
-    padding-top: 0;
-  }
 
-  .page-articles aside {
+  aside {
     padding-top: 40px;
   }
 
@@ -764,6 +783,11 @@ footer .nav-link:focus {
     margin-left: 1rem;
     padding-top: 20px;
     text-align: inherit;
+  }
+
+  .nav-social--bottom {
+    margin-top: 10px;
+    text-align: left;
   }
 }
 
@@ -786,12 +810,12 @@ footer .nav-link:focus {
   }
 
   /*    aside    */
-  .page-articles aside {
+  aside {
     padding-top: 40px;
   }
 
   aside {
-    padding-top: 0;
+    padding-top: 40px;
   }
 
   /*    footer   */
@@ -804,6 +828,11 @@ footer .nav-link:focus {
     padding-top: 20px;
     text-align: inherit;
   }
+
+  .nav-social--bottom {
+    margin-top: 10px;
+    text-align: left;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -814,7 +843,7 @@ footer .nav-link:focus {
 
   /*    aside    */
   aside {
-    padding-top: 0;
+    padding-top: 40px;
   }
 
   .page-articles aside {
@@ -824,6 +853,11 @@ footer .nav-link:focus {
   /*    footer    */
   footer .social {
     justify-content: flex-end;
+  }
+
+  .nav-social--bottom {
+    margin-top: 10px;
+    text-align: right;
   }
 }
 

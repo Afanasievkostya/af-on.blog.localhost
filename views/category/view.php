@@ -15,7 +15,11 @@
                     <?php foreach ($articles as $article): ?>
                       <div class="card text-center card-text">
                        <div class="card-header text-left">
-                          <?= $article->date?>
+                         <ul class="card-header--wrap">
+                           <li class="card-header--item"><?= $article->date?></li>
+                           <li class="card-header--item"><span style="color: #666;"><i class="fas fa-book-open"></i></span>
+                           <?= $article->views?></li>
+                         </ul>
                        </div>
                        <div class="card-body">
                           <h5 class="card-title"><?= $article->name?></h5>
@@ -26,13 +30,15 @@
                           <a href="<?= \yii\helpers\Url::to(['articles/view', 'id' => $article->id]) ?>" class="btn btn-primary">Подробнее</a>
                         </div>
                        </div>
-                       <ul class="card-footer text-muted text-left">
-                          <li class="click-wrap"><span class="card-footer-text"><?= $article->like?></span>
-                             <span class="card-footer--click" style="font-size: 30px"><i class="fas fa-comment-alt"></i></span>
-                          </li>
-                          <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-up"></i></span></a></li>
-                          <li class="click-wrap"><a href="#"><span class="card-footer--click" style="font-size: 30px"><i class="fas fa-thumbs-down"></i></span></a></li>
-                       </ul>
+                       <div class="card-footer text-muted text-left">
+                         <div id="vk_like<?= $article->id?>"></div>
+                           <script type="text/javascript">
+                            window.onload = function () {
+                           VK.init({apiId: 111, onlyWidgets: true});
+                            VK.Widgets.Like('vk_like<?= $article->id?>', {width: 300});
+                             }
+                           </script>
+                       </div>
                     </div>
 
                   <?php endforeach; ?>
@@ -57,6 +63,18 @@
                        </div>
                 </div>
                  </section>
+                 <!-- ***************************************** -->
+
+                 <div class="social-box">
+                   <ul class="social-box--wrap">
+                     <li class="social-box--item"><a href="https://facebook.com" class="btn btn-secondary"><span style="font-size: 18px; color: #fff;"><i class="fab fa-facebook-f"></i></span></a></li>
+                     <li class="social-box--item"><a href="https://twitter.com" class="btn btn-warning"><span style="font-size: 18px; color: #46505a;"><i class="fab fa-twitter"></i></span></a></li>
+                     <li class="social-box--item"><a href="https://plus.google.com" class="btn btn-danger"><span style="font-size: 18px; color: #fff;"><i class="fab fa-google-plus-g"></i></span></a></li>
+                     <li class="social-box--item"><a href="https://www.whatsapp.com" class="btn btn-info"><span style="font-size: 20px; color: #fff;"><i class="fab fa-whatsapp"></i></span></a></li>
+                     <li class="social-box--item"><a href="https://www.instagram.com" class="btn btn-success"><span style="font-size: 20px; color: #fff;"><i class="fab fa-instagram"></i></span></a></li>
+                     <li class="social-box--item"><a href="https://www.vk.com" class="btn btn-dark"><span style="font-size: 20px; color: #fff;"><i class="fab fa-vk"></i></span></a></li>
+                   </ul>
+                 </div>
               </div>
               <div class="col-lg-3">
                  <aside>
@@ -69,7 +87,9 @@
                     </section>
 
                     <hr align="center" color="#ccc" />
+
       <!-- ********************************************-->
+
                     <div class="archive navbar-expand">
                        <div class="collapse navbar-collapse">
                           <div class="archive-wrap">

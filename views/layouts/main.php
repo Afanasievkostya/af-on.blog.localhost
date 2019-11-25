@@ -21,6 +21,7 @@ $action = Yii::$app->controller->action->id;
      <meta charset="<?= Yii::$app->charset ?>">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1">
+     <script src="https://vk.com/js/api/openapi.js?162" type="text/javascript"></script>
      <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -55,10 +56,10 @@ $action = Yii::$app->controller->action->id;
                         }  ?>>
                            <?= Html::a('Публикации', ['category/articles'], ['class'=>'nav-link'])?>
                         </li>
-                        <li <?php if ($action == "video") { ?>class="nav-item active"<?php } else {
+                        <li <?php if ($action == "clip") { ?>class="nav-item active"<?php } else {
                           ?>class="nav-item"<?php
                         }  ?>>
-                           <a class="nav-link" href="clips.html">Видео</a>
+                           <?= Html::a('Видео', ['video/clip'], ['class'=>'nav-link'])?>
                         </li>
                         <li <?php if ($action == "author") { ?>class="nav-item active"<?php } else {
                           ?>class="nav-item"<?php
@@ -104,12 +105,12 @@ $action = Yii::$app->controller->action->id;
                  <?= Html::a('<p class="logo--text1">af-on<br></p>
                  <span class="logo--text2">blog</span>', ['site/index'], ['class'=>'brand'])?>
                </div>
-               <ul class="info col-md-5">
+               <ul class="info col-md-4">
                   <li class="info-item">  <a class="info-click" data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;">
                       Контакты
                     </a></li>
                </ul>
-               <div class="nav-social col-md-4">
+               <div class="nav-social col-md-5">
                   <ul class="social">
                      <li class="nav-item">
                         <a class="nav-link" href="https://facebook.com"><span style="font-size: 18px; color: #46505a;"><i class="fab fa-facebook-f"></i></span></a>

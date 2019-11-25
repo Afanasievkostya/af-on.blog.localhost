@@ -15,7 +15,7 @@ use yii\helpers\Html;
                      </div>
                      <div class="author-text">
                         <div class="author-img">
-                         <img src="/img/admin1.png" alt="автор">
+                         <img src="/img/admin.png" alt="автор">
                          </div>
                          <div class="name">
                              <h4 class="name-text"><span>имя:</span> Константин<span></span></h4>

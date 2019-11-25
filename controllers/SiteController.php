@@ -7,6 +7,8 @@ use yii\filters\AccessControl;
 //use yii\web\Controller;
 use app\models\category;
 use app\models\articles;
+use app\models\categoryVideo;
+use app\models\video;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -68,13 +70,14 @@ class SiteController extends AppController
 
       $cards = Articles::find()->where('active = :active', [':active' => $active])->andWhere('archive = :archive', [':archive' => $archive])->orderBy('date desc')->limit(3)->all();
 
+      $clips = Video::find()->where('active = :active', [':active' => $active])->andWhere('archive = :archive', [':archive' => $archive])->orderBy('date desc')->limit(3)->all();
+
         $this->setMeta('af-on.blog');
 
         if($cards) {
+         return $this->render('index', compact('cards', 'clips'));
+        }
 
-         return $this->render('index', compact('cards'));
-
-      }
     }
 
     public function actionAuthor()

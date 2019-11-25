@@ -65,9 +65,10 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'like')->textInput() ?>
+    <?= $form->field($model, 'views')->textInput() ?>
 
     <?= $form->field($model, 'active')->dropDownList([ 'Черновик', 'Опубликован', ]) ?>
+
     <?php //echo $form->field($model, 'archive')->checkbox() ?>
     <div class="form-group field-articles-archive">
       <input type="hidden" name="Articles[archive]" value="0"><label class="control-label" style="cursor: pointer;"><input type="checkbox" id="articles-archive" name="Articles[archive]" value="1"> Архив</label>

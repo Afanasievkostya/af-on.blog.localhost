@@ -24,8 +24,6 @@ CREATE TABLE IF NOT EXISTS `category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
--- --------------------------------------------------------
-
 --
 -- Дамп данных таблицы `category`
 --

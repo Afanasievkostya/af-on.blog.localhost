@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'keywords',
             'description',
-            'like',
+            'views',
             //'active',
             [
               'attribute' => 'active',

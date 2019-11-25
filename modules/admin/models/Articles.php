@@ -54,7 +54,7 @@ class Articles extends \yii\db\ActiveRecord
     {
         return [
             [['category_id', 'name'], 'required'],
-            [['category_id', 'date', 'like'], 'integer'],
+            [['category_id', 'date', 'views'], 'integer'],
             [['content_info', 'content', 'active', 'archive'], 'string'],
             [['name', 'image', 'keywords', 'description'], 'string', 'max' => 255],
         ];
@@ -75,7 +75,7 @@ class Articles extends \yii\db\ActiveRecord
             'date' => 'Дата',
             'keywords' => 'Ключевые слова',
             'description' => 'Мета-описание',
-            'like' => 'Лайки',
+            'views' => 'Просмотры',
             'active' => 'Черновик',
             'archive' => 'Архив',
         ];
