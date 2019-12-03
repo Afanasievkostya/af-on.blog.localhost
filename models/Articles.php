@@ -37,7 +37,8 @@ class Articles extends \yii\db\ActiveRecord
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
-    public function afterFind() {
+    public function afterFind()
+    {
         $monthes = [
           1 => 'января', 2 => 'февраля', 3 => 'марта', 4 => 'апреля',
           5 => 'мая', 6 => 'июня', 7 => 'июля', 8 => 'августа',
@@ -46,5 +47,4 @@ class Articles extends \yii\db\ActiveRecord
 
         $this->date = date('j ', $this->date).$monthes[date('n', $this->date)].date(' Y', $this->date);
     }
-
 }

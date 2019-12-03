@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-//use yii\web\Controller;
 use app\models\category;
 use app\models\articles;
 use app\models\categoryVideo;
@@ -65,19 +64,18 @@ class SiteController extends AppController
      */
     public function actionIndex()
     {
-      $active = '1';
-      $archive = '0';
+        $active = '1';
+        $archive = '0';
 
-      $cards = Articles::find()->where('active = :active', [':active' => $active])->andWhere('archive = :archive', [':archive' => $archive])->orderBy('date desc')->limit(3)->all();
+        $cards = Articles::find()->where('active = :active', [':active' => $active])->andWhere('archive = :archive', [':archive' => $archive])->orderBy('date desc')->limit(3)->all();
 
-      $clips = Video::find()->where('active = :active', [':active' => $active])->andWhere('archive = :archive', [':archive' => $archive])->orderBy('date desc')->limit(3)->all();
+        $clips = Video::find()->where('active = :active', [':active' => $active])->andWhere('archive = :archive', [':archive' => $archive])->orderBy('date desc')->limit(3)->all();
 
         $this->setMeta('af-on.blog');
 
-        if($cards) {
-         return $this->render('index', compact('cards', 'clips'));
+        if ($cards) {
+            return $this->render('index', compact('cards', 'clips'));
         }
-
     }
 
     public function actionAuthor()
@@ -108,17 +106,17 @@ class SiteController extends AppController
         ]);
     }
 
-    /**
-     * Logout action.
-     *
-     * @return Response
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
+    // /**
+    //  * Logout action.
+    //  *
+    //  * @return Response
+    //  */
+    // public function actionLogout()
+    // {
+    //     Yii::$app->user->logout();
+    //
+    //     return $this->goHome();
+    // }
 
     /**
      * Displays contact page.
@@ -136,15 +134,5 @@ class SiteController extends AppController
         return $this->render('contact', [
             'model' => $model,
         ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 }

@@ -82,7 +82,7 @@ $action = Yii::$app->controller->action->id;
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                            <form class="form-inline my-2 my-lg-0" method="get" action="<?= \yii\helpers\Url::to(['category/search'])?>">
-                              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" data-toggle="tooltip" data-placement="bottom" title="Поиск статьи по названию.">
                               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                            </form>
                         </div>
@@ -109,6 +109,7 @@ $action = Yii::$app->controller->action->id;
                   <li class="info-item">  <a class="info-click" data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;">
                       Контакты
                     </a></li>
+                    <li class="info-item"><span class="counter"></span></li>
                </ul>
                <div class="nav-social col-md-5">
                   <ul class="social">

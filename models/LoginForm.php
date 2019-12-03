@@ -35,14 +35,13 @@ class LoginForm extends Model
         ];
     }
 
-    public function attributeLabels() {
-
-      return [
+    public function attributeLabels()
+    {
+        return [
         'username' => 'Логин',
         'password' => 'Пароль',
         'rememberMe' => 'Запомнить',
       ];
-
     }
 
     /**
@@ -70,8 +69,8 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-          // запись auth_key в таблицу
-          if($this->rememberMe){
+            // запись auth_key в таблицу
+            if ($this->rememberMe) {
                 $u = $this->getUser();
                 $u->generateAuthKey();
                 $u->save();

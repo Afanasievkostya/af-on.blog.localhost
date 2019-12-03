@@ -37,6 +37,9 @@ class CategoryController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Category::find()->with('category'), // организуем жадную загрузку
+            'pagination' => [
+               'pageSize' => 5
+            ],
         ]);
 
         return $this->render('index', [
@@ -67,9 +70,9 @@ class CategoryController extends Controller
         $model = new Category();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           Yii::$app->session->setFlash('success', "Категория {$model->name}, добавлена");
+            Yii::$app->session->setFlash('success', 'Категория добавлена');
             return $this->redirect(['view', 'id' => $model->id]);
-        }else {
+        } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -88,8 +91,9 @@ class CategoryController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Категория изменнена');
             return $this->redirect(['view', 'id' => $model->id]);
-        }else {
+        } else {
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -106,7 +110,7 @@ class CategoryController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        Yii::$app->session->setFlash('success', "Категория удалена");
+        Yii::$app->session->setFlash('success', 'Категория удалена');
         return $this->redirect(['index']);
     }
 

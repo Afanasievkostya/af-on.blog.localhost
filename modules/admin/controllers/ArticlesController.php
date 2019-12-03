@@ -2,7 +2,6 @@
 
 namespace app\modules\admin\controllers;
 
-
 use Yii;
 use app\modules\admin\models\Articles;
 use yii\data\ActiveDataProvider;
@@ -38,6 +37,9 @@ class ArticlesController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Articles::find(),
+            'pagination' => [
+               'pageSize' => 5
+            ],
         ]);
 
         return $this->render('index', [
@@ -68,7 +70,7 @@ class ArticlesController extends Controller
         $model = new Articles();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::app()->session->setFlash('success', ["Статья {$model->name} добавлена"]);
+            Yii::app()->session->setFlash('success', 'Статья добавлена');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -89,7 +91,7 @@ class ArticlesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-          Yii::app()->session->setFlash('success', ["Статья {$model->name} исправленна"]);
+            Yii::$app->session->setFlash('success', 'Статья обновлена');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -108,23 +110,24 @@ class ArticlesController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        Yii::app()->session->setFlash('success', ["Статья {$model->name} удалина"]);
+        Yii::app()->session->setFlash('success', 'Статья удалина');
 
         return $this->redirect(['index']);
     }
 
-    public function actionDraft() {
+    public function actionDraft()
+    {
+        $active = 1;
 
-      $active = 1;
+        $cards = Articles::find()->where('active = :active', [':active' => $active])->all();
 
-      $cards = Articles::find()->where('active = :active', [':active' => $active])->all();
+        if (empty($cards)) {
+            throw new \yii\web\HttpException(404, 'В черновике ничего нет!');
+        } // сообщение об ошибке
 
-      if(empty($cards))
-            throw new \yii\web\HttpException(404, 'В черновике ничего нет!'); // сообщение об ошибке
-
-      if($cards) {
-      return $this->render('draft', compact('cards'));
-    }
+        if ($cards) {
+            return $this->render('draft', compact('cards'));
+        }
     }
 
 

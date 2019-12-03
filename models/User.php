@@ -1,12 +1,13 @@
 <?php
 
 namespace app\models;
+
 use yii\db\ActiveRecord;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
-
-    public static function tableName(){ // явное указание таблицы
+    public static function tableName()
+    { // явное указание таблицы
         return 'user';
     }
 
@@ -23,7 +24,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-      //        return static::findOne(['access_token' => $token]);
+        //        return static::findOne(['access_token' => $token]);
     }
 
     /**
@@ -69,11 +70,12 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-      //  return $this->password === $password;
-      return \Yii::$app->security->validatePassword($password, $this->password);
+        //  return $this->password === $password;
+        return \Yii::$app->security->validatePassword($password, $this->password);
     }
 
-    public function generateAuthKey(){
+    public function generateAuthKey()
+    {
         $this->auth_key = \Yii::$app->security->generateRandomString();
     }
 }

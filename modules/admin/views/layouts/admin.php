@@ -46,23 +46,23 @@ $action = Yii::$app->controller->action->id;
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav mr-auto">
                         <li <?php if ($action == "index") { ?>class="nav-item active"<?php } else {
-                          ?>class="nav-item"<?php
-                        } ?>>
+    ?>class="nav-item"<?php
+} ?>>
                            <?= Html::a('Главная', ['site/index'], ['class'=>'nav-link'])?>
                         </li>
                         <li <?php if ($action == "articles") { ?>class="nav-item active"<?php } else {
-                          ?>class="nav-item"<?php
-                        }  ?>>
+        ?>class="nav-item"<?php
+    }  ?>>
                            <?= Html::a('Публикации', ['category/articles'], ['class'=>'nav-link'])?>
                         </li>
                         <li <?php if ($action == "video") { ?>class="nav-item active"<?php } else {
-                          ?>class="nav-item"<?php
-                        }  ?>>
+        ?>class="nav-item"<?php
+    }  ?>>
                            <a class="nav-link" href="clips.html">Видео</a>
                         </li>
                         <li <?php if ($action == "author") { ?>class="nav-item active"<?php } else {
-                          ?>class="nav-item"<?php
-                        }  ?>>
+        ?>class="nav-item"<?php
+    }  ?>>
                            <?= Html::a('Об авторе', ['site/author'], ['class'=>'nav-link'])?>
                         </li>
                      </ul>
@@ -96,27 +96,22 @@ $action = Yii::$app->controller->action->id;
         <div class="container">
       <div class="header-bottom"><!--header-bottom-->
 
-               <div class="row">
-                   <div class="col-lg-5">
 
-                           <ul class="nav-bottom">
+            <div class="nav-bottom">
+               <div class="dropdown">
+                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Темы публикации
+                 </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['category/index']) ?>">Список тем</a>
+                  <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['category/create']) ?>">Добавить тему</a>
+                </div>
+              </div>
 
-
-
-                               <li class="dropdown">
- <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   Темы публикации
- </a>
-
- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-   <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['category/index']) ?>">Список тем</a>
-   <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['category/create']) ?>">Добавить тему</a>
- </div>
-</li>
+            <!-- ************************************************-->
 
 
-
-                               <li class="dropdown">
+<div class="dropdown">
  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   Статьи
  </a>
@@ -125,20 +120,48 @@ $action = Yii::$app->controller->action->id;
    <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['articles/index']) ?>">Список статей</a>
    <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['articles/create']) ?>">Добавить статью</a>
  </div>
-</li>
+</div>
 
-<li class="dropdown">
-  <?= Html::a('Черновик', ['articles/draft'], ['class'=>'btn btn-secondary'])?>
-</li>
+<!-- ************************************************-->
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Видео темы
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+     <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['movie/index']) ?>">Список видео тем</a>
+     <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['movie/create']) ?>">Добавить видео тему</a>
+  </div>
+</div>
+
+<!-- ************************************************-->
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Видео
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+     <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['video/index']) ?>">Список видео</a>
+     <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['video/create']) ?>">Добавить видео</a>
+  </div>
+</div>
+
+<div class="dropdown">
+  <?= Html::a('Черновик статьи', ['articles/draft'], ['class'=>'btn btn-secondary'])?>
+</div>
+
+<div class="dropdown">
+  <?= Html::a('Черновик видео', ['video/active'], ['class'=>'btn btn-secondary'])?>
+</div>
 
 
-                           </ul>
+</div>
 
-                   </div>
-               </div>
+
 
        </div><!--/header-bottom-->
-       <?php if( Yii::$app->session->hasFlash('success') ): ?>
+
+       <?php if (Yii::$app->session->hasFlash('success')): ?>
            <div class="alert alert-success alert-dismissible" role="alert">
                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <?php echo Yii::$app->session->getFlash('success'); ?>

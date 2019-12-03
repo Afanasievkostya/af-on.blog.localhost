@@ -7,7 +7,11 @@ $('.categories-sheps').dcAccordion({speed: 300});
 
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
-})
+});
+
+// подсказки
+
+$('[data-toggle="tooltip"]').tooltip();
 
 //comments
 

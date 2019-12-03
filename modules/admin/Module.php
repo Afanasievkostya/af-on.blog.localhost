@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\admin;
+
 use yii\filters\AccessControl;
 
 /**
@@ -23,8 +24,9 @@ class Module extends \yii\base\Module
         // custom initialization code goes here
     }
 
-    public function behaviors(){
-       return [
+    public function behaviors()
+    {
+        return [
            'access' => [
                'class' => AccessControl::className(),
                'rules' => [
@@ -35,5 +37,5 @@ class Module extends \yii\base\Module
                ]
            ]
        ];
-   }
+    }
 }

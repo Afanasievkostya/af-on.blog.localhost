@@ -252,7 +252,6 @@ main .text {
 }
 
 /*        video     */
-
 main .video {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -270,6 +269,21 @@ main .video {
   margin-top: 30px;
 }
 
+.text-muted--date {
+  font-size: 16px;
+}
+
+.card-text--wrap {
+  padding-bottom: 30px;
+}
+
+.card-text--wrap li {
+  display: inline-block;
+}
+
+.card-text--wrap li:last-child {
+  margin-left: 10px;
+}
 
 .card-footer--click {
   padding: 0 15px 0 15px;
@@ -290,6 +304,11 @@ main .video {
   position: absolute;
   top: 2px;
   transform: scaleX(-1);
+}
+
+.card iframe {
+  width: 100% !important;
+  height: 295px !important;
 }
 
 /*-------pagination-------*/
@@ -527,7 +546,7 @@ aside hr {
 }
 
 .site-contact .form-group {
-   padding-top: 10px;
+  padding-top: 10px;
 }
 
 .site-login label,
@@ -603,6 +622,10 @@ footer .brand {
   text-align: center;
 }
 
+.info li:last-child {
+  margin-top: 15px;
+}
+
 footer .social {
   display: flex;
   flex-direction: row;
@@ -641,14 +664,19 @@ footer .nav-link:focus {
 
 /*     header-bottom   */
 .header-bottom {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 40px;
 }
 
 .nav-bottom {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.nav-bottom .dropdown {
+  padding-top: 20px;
 }
 
 .index,
@@ -736,14 +764,13 @@ footer .nav-link:focus {
 
 /*---------comments--------*/
 .comments {
-    margin: 0;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    text-align: center;
+  margin: 0;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  text-align: center;
 }
 
 /* ------- modal ------*/
-
 @media (max-width: 575.98px) {
   h1 {
     font-size: 40px;
@@ -769,7 +796,6 @@ footer .nav-link:focus {
   }
 
   /*    aside    */
-
   aside {
     padding-top: 40px;
   }

@@ -28,6 +28,4 @@ class CategoryVideo extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Video::className(), ['category_video_id' => 'id']);
     }
-
-
 }

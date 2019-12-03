@@ -67,7 +67,7 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?= $form->field($model, 'views')->textInput() ?>
 
-    <?= $form->field($model, 'active')->dropDownList([ 'Черновик', 'Опубликован', ]) ?>
+    <?= $form->field($model, 'active')->dropDownList(['Черновик', 'Опубликован']) ?>
 
     <?php //echo $form->field($model, 'archive')->checkbox() ?>
     <div class="form-group field-articles-archive">

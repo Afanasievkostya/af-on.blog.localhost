@@ -33,11 +33,13 @@ class Articles extends \yii\db\ActiveRecord
         return 'articles';
     }
 
-    public function getCategory() {
-      return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
-    public function afterFind() {
+    public function afterFind()
+    {
         $monthes = [
           1 => 'января', 2 => 'февраля', 3 => 'марта', 4 => 'апреля',
           5 => 'мая', 6 => 'июня', 7 => 'июля', 8 => 'августа',
@@ -66,12 +68,12 @@ class Articles extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID статьи',
+            'id' => '№ статьи',
             'category_id' => 'Категория',
             'name' => 'Название',
             'image' => 'Фото',
             'content_info' => 'Начальный контент',
-            'content' => 'Контент',
+            'content' => 'Содержание',
             'date' => 'Дата',
             'keywords' => 'Ключевые слова',
             'description' => 'Мета-описание',
